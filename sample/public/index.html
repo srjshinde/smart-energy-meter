@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta  charset="utf-8">
+	<title>led status</title>
+</head>
+<body>
+
+<h1 > lat: </h1>
+<h3 id="lat">  </h3>
+
+<h1 > lon: </h1>
+<h3 id="lon">  </h3>
+
+<h1 > <br><br> </h1>
+
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCy-fVfywzsr9AhydpJhnYNQ0CzANwVgVw",
+    authDomain: "nodemcu-first.firebaseapp.com",
+    databaseURL: "https://nodemcu-first.firebaseio.com",
+    projectId: "nodemcu-first",
+    storageBucket: "nodemcu-first.appspot.com",
+    messagingSenderId: "361032126209"
+  };
+  firebase.initializeApp(config);
+
+var lat = document.getElementById('lat');
+var dbRef = firebase.database().ref().child('lat');
+dbRef.on('value', snap => lat.innerText = snap.val());
+
+var lon= document.getElementById('lon');
+var dbRef = firebase.database().ref().child('lon');
+dbRef.on('value', snap => lon.innerText = snap.val());
+
+</script>
+
+
+</body>
+</html>
